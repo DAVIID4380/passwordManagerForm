@@ -1,4 +1,4 @@
-package Logic;
+package passwordManagerForm.Logic;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -37,6 +37,7 @@ public class EncryptionService {
 
     // Método para obtener la clave secreta en formato Base64
     public String getSecretKey() {
+
         return Base64.getEncoder().encodeToString(secretKey.getEncoded());
     }
 

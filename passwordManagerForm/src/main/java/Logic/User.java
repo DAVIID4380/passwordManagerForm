@@ -1,4 +1,4 @@
-package Logic;
+package passwordManagerForm.Logic;
 
 public class User {
     private String username;
@@ -22,8 +22,9 @@ public class User {
         System.out.println("Contraseña maestra actualizada con éxito.");
     }
 
-    // Getters y Setters (si son necesarios)
+    // Getters y Setters
     public String getUsername() {
+
         return username;
     }
 
