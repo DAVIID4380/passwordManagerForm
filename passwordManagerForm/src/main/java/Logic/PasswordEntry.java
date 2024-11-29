@@ -6,21 +6,24 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
-public class PasswordEntry {
+public class PasswordEntry{
     private String id;
     private String title;
     private String username;
     private String encryptedPassword;
     private String url;
     private String notes;
+    private final EncryptionService encryptionService;
 
-    public PasswordEntry(String id, String title, String username, String encryptedPassword, String url, String notes) {
+    public PasswordEntry(String id, String title, String username, String password, String url, String notes, EncryptionService encryptionService) throws Exception {
         this.id = id;
         this.title = title;
         this.username = username;
-        this.encryptedPassword = encryptedPassword;
         this.url = url;
         this.notes = notes;
+        this.encryptionService = encryptionService;
+        // Encripta la contraseña al crear la entrada
+        this.encryptedPassword = this.encryptionService.encrypt(password);
     }
 
     public String getId() {
@@ -71,10 +74,8 @@ public class PasswordEntry {
         this.notes = notes;
     }
 
-    public void encryptPassword(String password, EncryptionService encryptionService) {
-        this.encryptedPassword = encryptionService.encrypt(password);
+    public String decryptPassword() throws Exception {
+        return encryptionService.decrypt(this.encryptedPassword);
     }
 
-    public String decryptPassword(EncryptionService encryptionService) { return encryptionService.decrypt(this.encryptedPassword); }
-    
 }
