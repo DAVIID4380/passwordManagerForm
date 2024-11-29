@@ -11,7 +11,7 @@ public class Main {
             @Override
             public void run() {
                 JFrame frame = new UserForm();
-                frame.setSize(300, 300);
+                frame.setSize(300, 250);
                 frame.setVisible(true);
             }
         });
